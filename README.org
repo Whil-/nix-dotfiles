@@ -1,0 +1,40 @@
+#+TITLE: Dotfiles for nix
+
+This repository supports installation of Nix on Ubuntu within WSL2. For now. The goal is for the configuration to be more general than that, but got to start somewhere.
+
+nixpkgs contains my userland nix configuration, and is symlinked to $HOME/.config/nixpkgs via the install script
+
+* Inspiration
+The following configurations have been used as insipration for this repository:
+- https://github.com/mjlbach/nix-dotfiles/
+- https://github.com/srid/nixos-config
+
+* To install nix
+Follow instructions in the manual:
+- https://nixos.org/manual/nix/stable/#chap-installation
+
+#+BEGIN_SRC bash
+  sh <(curl -L https://nixos.org/nix/install)
+#+END_SRC
+
+* To install flakes
+Follow instructions at the wiki:
+- https://nixos.wiki/wiki/Flakes
+
+#+begin_src bash
+  nix-env -iA nixpkgs.nixUnstable
+#+end_src
+
+* To install cachix
+
+#+BEGIN_SRC nix
+  nix-env -iA cachix -f https://cachix.org/api/v1/install
+#+END_SRC
+
+* To install the home-manager configuration in this repository
+
+#+BEGIN_SRC bash
+  git clone https://github.com/whil-/nix-dotfiles.git
+  cd nix-dotfiles/nixpkgs
+  bash install.sh {linux-desktop, macbook-pro, linux-server, nixos-desktop}`
+#+END_SRC
