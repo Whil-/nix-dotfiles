@@ -18,7 +18,7 @@
     [user]
       email = gustav@whil.se
       name = Gustav Wikström
-  ''
+  '';
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
